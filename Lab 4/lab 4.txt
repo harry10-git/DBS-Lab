@@ -1,0 +1,50 @@
+1.)Select dept_name,count(distinct ID) from student group by dept_name;
+
+2.)  Select dept_name,count(distinct ID) from student group by dept_name
+     having count(distinct id)> 10;
+
+3.) select dept_name, count(distinct course_id) from course group by dept_name;
+
+4.) with temptbl (a,b) as(
+select dept_name, avg(salary) from instructor group by dept_name having avg(salary)>42000)
+select a,b from temptbl;
+
+//5.) Select sec_id,count(distinct ID) from (takes natural join section) where semester='Spring' and year=2009 group by sec_id;
+
+6.) Select course_id,prereq_id from prereq order by course_id; 
+
+7.) Select name,salary from instructor order by salary desc ;
+
+//8.)  with temptbl (a,b)as(
+    Select dept_name,max(salary) sal 
+	from instructor group by dept_name)
+	select dept_name, salary from instructor
+	where salary = select max(b) from temptbl;
+	
+
+9.)  select dept_name,avg(salary) from instructor group by dept_name;
+
+10.) Select max(total_student) from (Select count(distinct ID) as total_student from takes group by sec_id, semester, year having semester='Spring' and year=2010);
+
+
+11.)  Select t.Name from Instructor t, teaches s, takes m, student n where t.id=s.id and s.course_id=m.course_id and m.id = n.id and n.dept_name = 'Comp. Sci';
+
+12.)  select dept_name sal from instructor group by dept_name
+ 	 having avg(salary) > 50000 
+	intersect(
+	Select dept_name from student group by dept_name
+      having count(distinct id)>3)
+
+13.) with max_budget(val) as (
+    select max(budget) from department)
+    select dept_name,budget from department,max_budget where budget=val;
+
+14.  with temp(a,b) as
+ (select dept_name, avg(salary) from instructor group by dept_name)
+select dept_name,sum(salary) from instructor group by dept_name
+having sum(salary) > (select avg(b) from temp);
+
+17.)  delete from instructor where dept_name= 'Finance';
+
+18.)  delete from course
+     where dept_name= 'Comp. Sci.';

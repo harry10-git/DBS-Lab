@@ -1,0 +1,94 @@
+SET SERVEROUTPUT ON
+declare message varchar2(20):='Hello, World!'; 
+begin
+dbms_output.put_line(message); 
+end; 
+/
+
+-- SET SERVEROUTPUT ON
+DECLARE
+grade CHAR(1);
+BEGIN 
+grade := '&g'; 
+IF grade = 'A' 
+THEN DBMS_OUTPUT.PUT_LINE('Excellent'); 
+ELSIF grade = 'B' 
+THEN DBMS_OUTPUT.PUT_LINE('Very Good');
+ELSIF grade = 'C' 
+THEN DBMS_OUTPUT.PUT_LINE('Good'); 
+ELSIF grade = 'D' 
+THEN DBMS_OUTPUT. PUT_LINE('Fair'); 
+ELSIF grade = 'F' 
+THEN DBMS_OUTPUT.PUT_LINE('Poor'); 
+ELSE DBMS_OUTPUT.PUT_LINE('No such grade'); 
+END IF; 
+END; 
+/
+
+
+create table student(
+rollno numeric(1) primary key,
+gpa numeric(3,1)
+);
+
+insert into student values (1,5.8);
+insert into student values (2,6.5);
+insert into student values (3,3.4);
+insert into student values (4,7.8);
+insert into student values (5,9.5);
+
+
+1.
+declare 
+roll student.rollno%type;
+score student.gpa%type;
+begin
+roll :='&r';
+select gpa into score from student where rollno= roll;
+dbms_output.put_line(score);
+end;
+/
+
+
+2.	
+declare 
+roll student.rollno%type;
+score student.gpa%type;
+begin
+roll := '&r';
+select gpa into score from student where rollno= roll;
+if score >0 and score<4 then
+dbms_output.put_line('F');
+elsif score >4 and score<5 then
+dbms_output.put_line('E');
+elsif score >5 and score<9 then
+dbms_output.put_line('B');
+else
+dbms_output.put_line('A');
+end if;
+end;
+/
+
+3. 
+declare
+issue date;
+begin
+issue := &d1;
+dbms_output.put_line(issue);
+end;
+/
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 

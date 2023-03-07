@@ -1,0 +1,65 @@
+create table employee(
+emp_no numeric(4),
+emp_name varchar(10) not null,
+gender char(1) not null,
+salary numeric(5) not null,
+address varchar(10) not null,
+DNo numeric(3),
+primary key(emp_no),
+check (gender in('M','F'))
+);
+
+
+create table department(
+deptNo numeric(3),
+deptName varchar(20) not null unique,
+location varchar(20),
+primary key(deptNo)
+);
+
+
+alter table employee
+add foreign key (Dno) references department (deptNo);
+
+insert into department values (101,'comp_sci','AB5');
+insert into department values (102,'it','AB5');
+insert into department values (103,'civil','AB2');
+insert into department values (104,'eee','AB1');
+
+insert into employee values (01,'Harry','M',5000,'Ranchi',101);
+insert into employee values (02,'Ankit','M',2000,'JSR',102);
+insert into employee values (03,'Triya','F',1200,'Ranchi',102);
+insert into employee values (04,'Adarsh','M',3500,'Patna',104);
+
+insert into employee values (02,'Ankit','M',2000,'JSR',108);
+insert into department values (,'eee','AB1');
+
+delete from department where deptNo=101;
+
+alter table employee modify salary default 10000;
+
+
+
+
+alter table employee add(Dno numeric(3));
+alter table employee add(FOREIGN KEY (Dno) references department (deptNo) on delete cascade);
+
+
+update employee set Dno=101 where emp_name='Harry'; 
+update employee set Dno=102 where emp_name='Triya'; 
+update employee set Dno=102 where emp_name='Ankit'; 
+update employee set Dno=103 where emp_name='Adarsh';
+
+delete from department where deptNo = 103;
+
+
+insert into employee(emp_no,emp_name,gender,address,dno) 
+values(11,'Harika','F','Manipal',104);
+
+@"E:\210962022_DBS\Lab 2\University.sql"
+ 
+
+
+
+
+

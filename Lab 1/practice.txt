@@ -1,0 +1,18 @@
+create table account(
+account_number number(5),
+branch_name varchar (10),		
+balance number(10));
+
+create table branch(
+branch_name varchar(20), 
+branch_city varchar(20),
+assets varchar(20));
+
+create table customer(
+customer_name varchar(20),
+customer_street varchar(20),
+custmer_city varchar(20));
+
+insert into account(account_number,branch_name,balance) values(12005,'HDFC',51005);
+insert into account(account_number,branch_name,balance) values(42005,'SBI',21005);
+insert into account(account_number,branch_name,balance) values(52005,'HDFC',11005);

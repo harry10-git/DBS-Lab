@@ -1,0 +1,13 @@
+select name, dept_name from student;
+
+select name from instructor where dept_name='Comp. Sci.';
+
+select title from course where dept_name='Comp. Sci.' and credits=3 ;
+
+select takes.course_ID, course.TITLE from takes inner join course on
+course.course_ID =takes.course_ID  
+where takes.ID=12345;
+
+
+select name from instructor where salary between 40000 and 90000;
+

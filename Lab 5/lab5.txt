@@ -1,0 +1,44 @@
+select bdate ,address from employee where fname='John';
+
+// select pname,pnumber,dnum, dname from project p, department d
+  where p.dnum=d.dnumber and p.plocation like 'Sta%';
+
+select distinct salary from employee;
+
+4. with temp as(
+	select fname,lname,ssn from employee)
+select e.fname,e.lname,t.fname,t.lname from employee e, temp t
+where e.super_ssn in (select ssn from temp); 
+
+5. 
+
+6.  select fname,address from employee where address like '%Houston%';
+
+
+7. select w.essn, e.fname,salary*1.1 from works_on w, employee e
+   where w.essn = e.ssn and pno=
+(select pnumber from project where pname='ProductX');
+
+8. select fname from employee where dno= 5
+    and salary between 30000 and 40000;
+
+9. 
+
+10. select fname from employee where super_ssn is null;
+
+11. 
+
+12. select fname from employee where ssn not in(
+    select essn from dependent);
+
+
+14. select essn from works_on where pno in(1,2,3);
+
+15. select sum(salary), max(salary), min(salary),avg(salary) from employee;
+
+16.  select sum(salary) from employee where dno =(
+    select dnumber from department where dname='Research');
+
+17.  select pno, count(essn) from works_on group by pno
+
+
